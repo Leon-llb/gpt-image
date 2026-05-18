@@ -7,6 +7,10 @@
 <h1 align="center">Codex Image</h1>
 
 <p align="center">
+  <sub>🌐 <a href="README.zh-CN.md">简体中文</a></sub>
+</p>
+
+<p align="center">
   Free AI image generation powered by your ChatGPT Plus subscription.<br>
   Zero API cost. Zero tokens. Just your Plus sub and Codex CLI.
 </p>
