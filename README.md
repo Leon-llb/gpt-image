@@ -1,65 +1,106 @@
-# GPT Image —— 通过 Codex CLI 免费生图
+<p align="center">
+  <picture>
+    <img alt="Codex Image" src="https://raw.githubusercontent.com/Leon-llb/codex-image/main/assets/logo.svg" width="120">
+  </picture>
+</p>
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/Leon-llb/codex-image/releases)
-[![Platform](https://img.shields.io/badge/platform-macOS-lightgrey)]()
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Requires](https://img.shields.io/badge/requires-ChatGPT%20Plus%20%7C%20Codex.app-orange)](https://codex.chat)
+<h1 align="center">Codex Image</h1>
 
-调用 ChatGPT 桌面客户端内置的 Codex 引擎，走 **ChatGPT Plus 订阅** 生图，**不消耗 API 余额**。
+<p align="center">
+  通过 ChatGPT Plus 订阅免费生图，不花一分 API 余额。
+</p>
 
-## 前置条件（硬性要求）
+<p align="center">
+  <a href="https://github.com/Leon-llb/codex-image/releases"><img src="https://img.shields.io/github/v/release/Leon-llb/codex-image?color=blue&label=version" alt="Version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License MIT"></a>
+  <a href="#"><img src="https://img.shields.io/badge/platform-macOS-silver" alt="Platform macOS"></a>
+  <a href="https://codex.chat"><img src="https://img.shields.io/badge/requires-ChatGPT%20Plus%20%7C%20Codex.app-orange" alt="Requires ChatGPT Plus | Codex.app"></a>
+  <a href="#"><img src="https://img.shields.io/github/stars/Leon-llb/codex-image?style=social" alt="Stars"></a>
+</p>
+
+---
+
+## 这是什么
+
+Codex Image 是一个极简的 AI 图片生成工具。它调用你本机已安装的 [Codex.app](https://codex.chat) 来驱动 ChatGPT 的生图能力，**走 Plus 订阅额度，完全免费**。
+
+- 没有 API key
+- 没有 token 计费
+- 没有第三方中转
+- 就是 Codex CLI + 你的 Plus 订阅
+
+## 为什么用这个
+
+| | Codex Image | API 生图 |
+|---|---|---|
+| 费用 | 免费（Plus 已包含） | 按张计费 |
+| 模型 | ChatGPT 原生图像模型 | 取决于 API |
+| 文字渲染 | 精准 | 看模型 |
+| 安装 | 一行 git clone | 注册、绑卡、充值 |
+| 依赖 | Codex.app（已有 Plus 的话已装好） | 无 |
+
+## 前置条件
 
 | 条件 | 说明 |
-|------|------|
-| macOS | Codex.app 仅支持 macOS（Windows 用户可尝试 `codex` CLI） |
-| [Codex.app](https://codex.chat) 已安装 | 桌面客户端，提供 `codex` 命令行工具 |
-| ChatGPT Plus 订阅 | 生图走 Plus 额度，不额外收费 |
+|---|---|
+| macOS | Codex.app 仅支持 macOS |
+| [Codex.app](https://codex.chat) | 桌面客户端，提供 `codex` 命令 |
+| ChatGPT Plus | 生图走 Plus 额度 |
 
-> **没有 Plus 订阅？** 本工具无法使用。请先升级到 ChatGPT Plus。
+> 没有 Plus？请先升级：[chatgpt.com/upgrade](https://chatgpt.com/upgrade)
 
-## 安装
+## 快速开始
 
 ```bash
+# 1. 克隆
 git clone https://github.com/Leon-llb/codex-image.git ~/.claude/skills/codex-image
+
+# 2. 生图
+python3 ~/.claude/skills/codex-image/generate.py "a cat sleeping on a sofa, warm sunlight"
 ```
 
-## 命令行使用
+## 用法
 
-```bash
-python3 ~/.claude/skills/codex-image/generate.py "<prompt>" [size] [output_dir]
+```
+python3 generate.py "<prompt>" [size] [output_dir]
 ```
 
-| 参数 | 说明 | 默认值 |
-|------|------|--------|
-| prompt | 生图提示词 | 必填 |
-| size | 尺寸 `WxH` | `1024x1024` |
-| output_dir | 保存目录 | 当前目录 |
+| 参数 | 默认值 | 说明 |
+|---|---|---|
+| `prompt` | 必填 | 生图提示词 |
+| `size` | `1024x1024` | 尺寸，格式 `宽x高` |
+| `output_dir` | 当前目录 | 图片保存位置 |
 
 ```bash
-# 方形
-python3 generate.py "a cat sleeping on a sofa, warm sunlight"
+# 正方形头像
+python3 generate.py "一只柴犬，日系插画风，纯白背景" 1024x1024 ~/Downloads
 
 # 竖版海报
-python3 generate.py "恭喜发财新年海报，红色金色" 1024x1536 ~/Downloads
+python3 generate.py "a cinematic portrait, golden hour lighting, 8k" 1024x1536 ~/Downloads
 
-# 横版
-python3 generate.py "futuristic city skyline at dusk" 1536x1024
+# 横版壁纸
+python3 generate.py "cyberpunk city skyline at night, neon lights" 1536x1024 ~/Desktop
 ```
 
-## 集成到 Claude Code
+图片自动保存到 `~/Downloads`，文件名格式：`codex-image-20260518-143052.png`
 
-Claude Code 自动发现 `SKILL.md`，对话中说"生成一张 xxx 的图"即可触发。
+## 集成
 
-确保 skill 在 Claude Code 的 skills 目录：
+### Claude Code
+
+放在 skills 目录即可，Claude Code 自动识别：
+
 ```bash
 ln -sf ~/.claude/skills/codex-image ~/.claude/skills/codex-image
 ```
 
-## 集成到 Hermes / OpenClaw Agent
+对话中说「帮我生成一张 xxx 的图」即可触发。
 
-将本工具注册为 Agent 的 `image_gen` provider，让 Telegram/微信消息也能生图。
+### Hermes / OpenClaw Agent
 
-### 1. 安装插件
+让 Telegram、微信消息也能生图。
+
+**安装插件**
 
 ```bash
 mkdir -p ~/.hermes/hermes-agent/plugins/image_gen/codex-image
@@ -67,38 +108,39 @@ cp hermes-plugin/plugin.yaml ~/.hermes/hermes-agent/plugins/image_gen/codex-imag
 cp hermes-plugin/__init__.py ~/.hermes/hermes-agent/plugins/image_gen/codex-image/
 ```
 
-### 2. 配置 config.yaml
+**配置 `~/.hermes/config.yaml`**
 
 ```yaml
 plugins:
   enabled:
-  - image_gen/codex-image
-  disabled: []
+    - image_gen/codex-image
 
 image_gen:
   provider: codex-image
 ```
 
-### 3. 重启 Gateway
+**重启**
 
 ```bash
 hermes gateway restart
 ```
 
-之后在 Telegram/微信跟 Hermes 说"帮我生成一张 xxx 的图"，Agent 会调用 `image_generate` 工具 → 路由到 `codex-image` provider → 执行 `generate.py` → 图片保存到 `~/Downloads`。
-
 ## 原理
 
 ```
-用户消息 → Hermes Agent → image_generate 工具
-                              ↓
-                     codex-image provider
-                              ↓
-                   generate.py 脚本
-                              ↓
-                    codex exec (ChatGPT Plus)
-                              ↓
-                      图片 → ~/Downloads
+用户 → Hermes/Claude → image_generate 工具调用
+                           ↓
+                    codex-image provider
+                           ↓
+                    generate.py 脚本
+                           ↓
+                 codex exec (ChatGPT Plus 订阅)
+                           ↓
+                    图片 → ~/Downloads
 ```
 
-不走 API 计费，不消耗 token，纯 Plus 订阅额度。
+全程不走 OpenAI API，不产生额外费用。
+
+## License
+
+MIT — [Leon](https://github.com/Leon-llb)

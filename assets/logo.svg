@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Background -->
+  <rect width="120" height="120" rx="28" fill="#0D0D0D"/>
+  <!-- Inner gradient overlay -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+  </defs>
+  <!-- Mountain (image motif) -->
+  <polygon points="20,90 52,42 68,62 84,38 104,90" fill="url(#g)" opacity="0.9"/>
+  <!-- Sun -->
+  <circle cx="82" cy="52" r="11" fill="url(#sun)" opacity="0.85"/>
+  <!-- Code bracket left -->
+  <text x="28" y="72" font-family="monospace" font-size="18" font-weight="bold" fill="white" opacity="0.7">&lt;</text>
+  <!-- Code bracket right -->
+  <text x="85" y="72" font-family="monospace" font-size="18" font-weight="bold" fill="white" opacity="0.7">/&gt;</text>
+  <!-- Image icon (small square) -->
+  <rect x="42" y="57" width="14" height="14" rx="3" fill="white" opacity="0.6"/>
+  <circle cx="49" cy="62" r="3" fill="#0D0D0D" opacity="0.5"/>
+  <polygon points="47,67 56,60 56,67" fill="white" opacity="0.3"/>
+</svg>
