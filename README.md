@@ -1,5 +1,10 @@
 # GPT Image —— 通过 Codex CLI 免费生图
 
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/Leon-llb/gpt-image/releases)
+[![Platform](https://img.shields.io/badge/platform-macOS-lightgrey)]()
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Requires](https://img.shields.io/badge/requires-ChatGPT%20Plus%20%7C%20Codex.app-orange)](https://codex.chat)
+
 调用 ChatGPT 桌面客户端内置的 Codex 引擎，走 **ChatGPT Plus 订阅** 生图，**不消耗 API 余额**。
 
 ## 前置条件（硬性要求）
