@@ -1,40 +1,40 @@
 ---
 name: codex-image
-description: "通过 Codex CLI (ChatGPT Plus) 免费生图，不消耗 API 余额。需要安装 Codex.app 并登录 ChatGPT 账号。特点：文字渲染精准、照片级真实度。"
+description: "Free AI image generation via Codex CLI (ChatGPT Plus). Requires Codex.app installed and logged into a ChatGPT Plus account. Features: accurate text rendering, photorealistic quality."
 allowed-tools: Bash(python3 *)
 ---
 
-# Codex Image（Codex 通道）
+# Codex Image (via Codex CLI)
 
-通过 Codex CLI + ChatGPT Plus 订阅免费生图，**不走 API 计费**。
+Free image generation through Codex CLI + ChatGPT Plus subscription. **No API billing.**
 
-> 前提：已安装 Codex.app 并登录 ChatGPT Plus
+> Prerequisite: Codex.app installed and logged into ChatGPT Plus
 
-## 使用方式
+## Usage
 
 ```bash
 python3 ~/.claude/skills/codex-image/generate.py "<prompt>" [size] [output_dir]
 ```
 
-| 参数 | 说明 | 默认值 |
-|------|------|--------|
-| prompt | 生图提示词 | 必填 |
-| size | 尺寸 | `1024x1024` |
-| output_dir | 保存目录 | 当前目录 |
+| Argument | Description | Default |
+|----------|-------------|---------|
+| prompt | Image generation prompt | required |
+| size | Dimensions | `1024x1024` |
+| output_dir | Save location | current directory |
 
-## 示例
+## Examples
 
 ```bash
-# 方形
-python3 ~/.claude/skills/codex-image/generate.py "一只橘猫睡在沙发上，阳光洒落"
+# Square
+python3 ~/.claude/skills/codex-image/generate.py "a orange cat sleeping on a sofa, sunlight streaming in"
 
-# 横版
-python3 ~/.claude/skills/codex-image/generate.py "a futuristic city skyline" 1536x1024
+# Landscape
+python3 ~/.claude/skills/codex-image/generate.py "a futuristic city skyline at dusk" 1536x1024
 
-# 指定目录
-python3 ~/.claude/skills/codex-image/generate.py "日式庭院" 1024x1536 /Users/leon/Desktop
+# Portrait with output dir
+python3 ~/.claude/skills/codex-image/generate.py "a japanese zen garden" 1024x1536 ~/Desktop
 ```
 
-## 原理
+## How it works
 
-Codex CLI 走 ChatGPT 订阅，生图不额外收费（Plus 包含额度）。
+Codex CLI routes through your ChatGPT subscription — image generation costs nothing extra (included in Plus).

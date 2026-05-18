@@ -7,7 +7,8 @@
 <h1 align="center">Codex Image</h1>
 
 <p align="center">
-  通过 ChatGPT Plus 订阅免费生图，不花一分 API 余额。
+  Free AI image generation powered by your ChatGPT Plus subscription.<br>
+  Zero API cost. Zero tokens. Just your Plus sub and Codex CLI.
 </p>
 
 <p align="center">
@@ -20,87 +21,87 @@
 
 ---
 
-## 这是什么
+## What is this
 
-Codex Image 是一个极简的 AI 图片生成工具。它调用你本机已安装的 [Codex.app](https://codex.chat) 来驱动 ChatGPT 的生图能力，**走 Plus 订阅额度，完全免费**。
+Codex Image lets any CLI tool or AI agent generate images for free — by routing through your ChatGPT Plus subscription via [Codex CLI](https://codex.chat).
 
-- 没有 API key
-- 没有 token 计费
-- 没有第三方中转
-- 就是 Codex CLI + 你的 Plus 订阅
+- No API key
+- No token billing
+- No third-party proxy
+- Just Codex CLI + your Plus subscription
 
-## 为什么用这个
+## Why Codex Image
 
-| | Codex Image | API 生图 |
+| | Codex Image | API-based |
 |---|---|---|
-| 费用 | 免费（Plus 已包含） | 按张计费 |
-| 模型 | ChatGPT 原生图像模型 | 取决于 API |
-| 文字渲染 | 精准 | 看模型 |
-| 安装 | 一行 git clone | 注册、绑卡、充值 |
-| 依赖 | Codex.app（已有 Plus 的话已装好） | 无 |
+| Cost | Free (included in Plus) | Pay per image |
+| Model | ChatGPT native image model | Varies by API |
+| Text rendering | Accurate | Hit or miss |
+| Setup | One `git clone` | Register, add card, top up |
+| Dependency | Codex.app (already installed if you have Plus) | None |
 
-## 前置条件
+## Prerequisites
 
-| 条件 | 说明 |
+| Requirement | Notes |
 |---|---|
-| macOS | Codex.app 仅支持 macOS |
-| [Codex.app](https://codex.chat) | 桌面客户端，提供 `codex` 命令 |
-| ChatGPT Plus | 生图走 Plus 额度 |
+| macOS | Codex.app is macOS-only |
+| [Codex.app](https://codex.chat) | Desktop client, provides the `codex` CLI |
+| ChatGPT Plus | Image generation uses your Plus quota |
 
-> 没有 Plus？请先升级：[chatgpt.com/upgrade](https://chatgpt.com/upgrade)
+> Don't have Plus? Upgrade at [chatgpt.com/upgrade](https://chatgpt.com/upgrade)
 
-## 快速开始
+## Quick start
 
 ```bash
-# 1. 克隆
+# 1. Clone
 git clone https://github.com/Leon-llb/codex-image.git ~/.claude/skills/codex-image
 
-# 2. 生图
+# 2. Generate
 python3 ~/.claude/skills/codex-image/generate.py "a cat sleeping on a sofa, warm sunlight"
 ```
 
-## 用法
+## Usage
 
 ```
 python3 generate.py "<prompt>" [size] [output_dir]
 ```
 
-| 参数 | 默认值 | 说明 |
+| Argument | Default | Description |
 |---|---|---|
-| `prompt` | 必填 | 生图提示词 |
-| `size` | `1024x1024` | 尺寸，格式 `宽x高` |
-| `output_dir` | 当前目录 | 图片保存位置 |
+| `prompt` | required | Image generation prompt |
+| `size` | `1024x1024` | Dimensions as `WxH` |
+| `output_dir` | cwd | Where to save the image |
 
 ```bash
-# 正方形头像
-python3 generate.py "一只柴犬，日系插画风，纯白背景" 1024x1024 ~/Downloads
+# Square
+python3 generate.py "a shiba inu, japanese illustration style, white background"
 
-# 竖版海报
+# Portrait poster
 python3 generate.py "a cinematic portrait, golden hour lighting, 8k" 1024x1536 ~/Downloads
 
-# 横版壁纸
+# Landscape wallpaper
 python3 generate.py "cyberpunk city skyline at night, neon lights" 1536x1024 ~/Desktop
 ```
 
-图片自动保存到 `~/Downloads`，文件名格式：`codex-image-20260518-143052.png`
+Images are saved with the filename pattern `codex-image-20260518-143052.png`.
 
-## 集成
+## Integrations
 
 ### Claude Code
 
-放在 skills 目录即可，Claude Code 自动识别：
+Drop the skill into your skills directory and Claude Code discovers it automatically:
 
 ```bash
 ln -sf ~/.claude/skills/codex-image ~/.claude/skills/codex-image
 ```
 
-对话中说「帮我生成一张 xxx 的图」即可触发。
+Say "generate an image of..." in conversation to trigger it.
 
 ### Hermes / OpenClaw Agent
 
-让 Telegram、微信消息也能生图。
+Let your Telegram or WeChat agent generate images too.
 
-**安装插件**
+**Install the plugin**
 
 ```bash
 mkdir -p ~/.hermes/hermes-agent/plugins/image_gen/codex-image
@@ -108,7 +109,7 @@ cp hermes-plugin/plugin.yaml ~/.hermes/hermes-agent/plugins/image_gen/codex-imag
 cp hermes-plugin/__init__.py ~/.hermes/hermes-agent/plugins/image_gen/codex-image/
 ```
 
-**配置 `~/.hermes/config.yaml`**
+**Configure `~/.hermes/config.yaml`**
 
 ```yaml
 plugins:
@@ -119,27 +120,29 @@ image_gen:
   provider: codex-image
 ```
 
-**重启**
+**Restart**
 
 ```bash
 hermes gateway restart
 ```
 
-## 原理
+Now when someone messages your Hermes agent "generate an image of X", the agent's built-in `image_generate` tool routes to the codex-image provider, which runs `generate.py`, and the image lands in `~/Downloads`.
+
+## How it works
 
 ```
-用户 → Hermes/Claude → image_generate 工具调用
+User → Hermes/Claude → image_generate tool call
                            ↓
-                    codex-image provider
+                  codex-image provider
                            ↓
-                    generate.py 脚本
+                    generate.py script
                            ↓
-                 codex exec (ChatGPT Plus 订阅)
+                 codex exec (ChatGPT Plus)
                            ↓
-                    图片 → ~/Downloads
+                    Image → ~/Downloads
 ```
 
-全程不走 OpenAI API，不产生额外费用。
+No OpenAI API calls. No extra billing. Just your Plus subscription doing what it already pays for.
 
 ## License
 

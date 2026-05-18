@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""通过 Codex CLI (ChatGPT Plus) 免费生图，支持参考图修改。"""
+"""Free image generation via Codex CLI (ChatGPT Plus). Supports reference image editing."""
 import os, sys, shutil, subprocess
 from datetime import datetime
 
@@ -20,11 +20,11 @@ def list_images():
 
 def generate(prompt, size="1024x1024", output_dir=None, image=None):
     if image:
-        full_prompt = f"我有一张现有图片在 {image}，请参考它的设计风格和布局，但根据以下正确产品信息修正内容后重新生成一张：{prompt}"
+        full_prompt = f"I have an existing image at {image}. Please reference its design style and layout, but regenerate it with corrected content based on the following product info: {prompt}"
     else:
-        full_prompt = f"生成一张信息图: {prompt}。图片尺寸 {size}。"
+        full_prompt = f"Generate an infographic: {prompt}. Image size {size}."
 
-    print(f"生成中: {prompt[:80]}...", file=sys.stderr)
+    print(f"Generating: {prompt[:80]}...", file=sys.stderr)
 
     before = {fp for fp, _ in list_images()}
 
@@ -36,12 +36,12 @@ def generate(prompt, size="1024x1024", output_dir=None, image=None):
     )
 
     if result.returncode != 0:
-        raise Exception(f"codex 失败 (exit={result.returncode})")
+        raise Exception(f"codex failed (exit={result.returncode})")
 
     after = list_images()
     new_imgs = [(fp, mt) for fp, mt in after if fp not in before]
     if not new_imgs:
-        raise Exception("未找到新图片")
+        raise Exception("No new image found")
 
     new_imgs.sort(key=lambda x: x[1], reverse=True)
     image_path = new_imgs[0][0]
