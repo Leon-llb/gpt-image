@@ -11,15 +11,15 @@
 </p>
 
 <p align="center">
-  用你的 ChatGPT Plus 订阅免费生图。<br>
+  用你的 ChatGPT Plus 订阅实现 AI 生图。<br>
   零 API 费用。零 Token 消耗。只有你的 Plus 订阅和 Codex CLI。
 </p>
 
 <p align="center">
   <a href="https://github.com/Leon-llb/codex-image/releases"><img src="https://img.shields.io/github/v/release/Leon-llb/codex-image?color=blue&label=version" alt="Version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License MIT"></a>
-  <a href="#"><img src="https://img.shields.io/badge/platform-macOS-silver" alt="Platform macOS"></a>
-  <a href="https://codex.chat"><img src="https://img.shields.io/badge/requires-ChatGPT%20Plus%20%7C%20Codex.app-orange" alt="Requires ChatGPT Plus | Codex.app"></a>
+  <a href="#"><img src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-silver" alt="Platform macOS | Windows"></a>
+  <a href="https://codex.chat"><img src="https://img.shields.io/badge/requires-ChatGPT%20Plus%20%7C%20Codex-orange" alt="Requires ChatGPT Plus | Codex"></a>
   <a href="#"><img src="https://img.shields.io/github/stars/Leon-llb/codex-image?style=social" alt="Stars"></a>
 </p>
 
@@ -27,30 +27,30 @@
 
 ## 这是什么
 
-Codex Image 让任何 CLI 工具或 AI Agent 都能免费生图——通过 [Codex CLI](https://codex.chat) 走你已有的 ChatGPT Plus 订阅通道。
+Codex Image 让任何 CLI 工具或 AI Agent 都能生图——通过 [Codex 客户端](https://codex.chat) 走你已有的 ChatGPT Plus 订阅通道。
 
 - 无需 API Key
 - 无 Token 计费
 - 无第三方中转
-- 就是 Codex CLI + 你的 Plus 订阅
+- 就是 Codex 客户端 + 你的 Plus 订阅
 
 ## 为什么用这个
 
 | | Codex Image | API 方案 |
 |---|---|---|
-| 费用 | 免费（Plus 已包含） | 按张计费 |
+| 费用 | 不走 API 计费（消耗 Plus 额度） | 按张计费 |
 | 模型 | ChatGPT 原生图像模型 | 看 API |
 | 文字渲染 | 精准 | 参差不齐 |
 | 上手 | 一行 `git clone` | 注册、绑卡、充值 |
-| 依赖 | Codex.app（有 Plus 就已装好） | 无 |
+| 依赖 | Codex（有 Plus 就已装好） | 无 |
 
 ## 前置条件
 
 | 条件 | 说明 |
 |---|---|
-| macOS | Codex.app 仅支持 macOS |
-| [Codex.app](https://codex.chat) | 桌面客户端，提供 `codex` 命令 |
-| ChatGPT Plus | 生图走 Plus 额度 |
+| 操作系统 | macOS 或 Windows |
+| [Codex](https://codex.chat) | 桌面客户端，提供 `codex` 命令 |
+| ChatGPT Plus | 生图走 Plus 额度（适用于 DALL-E 3 消息配额） |
 
 > 没有 Plus？去 [chatgpt.com/upgrade](https://chatgpt.com/upgrade) 升级
 
@@ -146,7 +146,7 @@ hermes gateway restart
                     图片 → ~/Downloads
 ```
 
-不走 OpenAI API，不产生额外费用。只是把你 Plus 订阅已有的能力释放出来。
+不走 OpenAI API，不产生额外费用。只是把你 Plus 订阅已有的能力释放出来（注意：此操作会消耗你的 ChatGPT Plus 中 DALL-E 3 的对话限额）。
 
 ## License
 

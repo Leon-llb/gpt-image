@@ -11,15 +11,15 @@
 </p>
 
 <p align="center">
-  Free AI image generation powered by your ChatGPT Plus subscription.<br>
+  AI image generation powered by your ChatGPT Plus subscription.<br>
   Zero API cost. Zero tokens. Just your Plus sub and Codex CLI.
 </p>
 
 <p align="center">
   <a href="https://github.com/Leon-llb/codex-image/releases"><img src="https://img.shields.io/github/v/release/Leon-llb/codex-image?color=blue&label=version" alt="Version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License MIT"></a>
-  <a href="#"><img src="https://img.shields.io/badge/platform-macOS-silver" alt="Platform macOS"></a>
-  <a href="https://codex.chat"><img src="https://img.shields.io/badge/requires-ChatGPT%20Plus%20%7C%20Codex.app-orange" alt="Requires ChatGPT Plus | Codex.app"></a>
+  <a href="#"><img src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-silver" alt="Platform macOS | Windows"></a>
+  <a href="https://codex.chat"><img src="https://img.shields.io/badge/requires-ChatGPT%20Plus%20%7C%20Codex-orange" alt="Requires ChatGPT Plus | Codex"></a>
   <a href="#"><img src="https://img.shields.io/github/stars/Leon-llb/codex-image?style=social" alt="Stars"></a>
 </p>
 
@@ -27,7 +27,7 @@
 
 ## What is this
 
-Codex Image lets any CLI tool or AI agent generate images for free — by routing through your ChatGPT Plus subscription via [Codex CLI](https://codex.chat).
+Codex Image lets any CLI tool or AI agent generate images — by routing through your ChatGPT Plus subscription via [Codex CLI](https://codex.chat).
 
 - No API key
 - No token billing
@@ -38,19 +38,19 @@ Codex Image lets any CLI tool or AI agent generate images for free — by routin
 
 | | Codex Image | API-based |
 |---|---|---|
-| Cost | Free (included in Plus) | Pay per image |
+| Cost | No extra API bill (uses Plus quota) | Pay per image |
 | Model | ChatGPT native image model | Varies by API |
 | Text rendering | Accurate | Hit or miss |
 | Setup | One `git clone` | Register, add card, top up |
-| Dependency | Codex.app (already installed if you have Plus) | None |
+| Dependency | Codex (already installed if you have Plus) | None |
 
 ## Prerequisites
 
 | Requirement | Notes |
 |---|---|
-| macOS | Codex.app is macOS-only |
-| [Codex.app](https://codex.chat) | Desktop client, provides the `codex` CLI |
-| ChatGPT Plus | Image generation uses your Plus quota |
+| OS | macOS or Windows |
+| [Codex](https://codex.chat) | Desktop client, provides the `codex` CLI |
+| ChatGPT Plus | Image generation uses your Plus quota (DALL-E 3 message limits apply) |
 
 > Don't have Plus? Upgrade at [chatgpt.com/upgrade](https://chatgpt.com/upgrade)
 
@@ -146,7 +146,7 @@ User → Hermes/Claude → image_generate tool call
                     Image → ~/Downloads
 ```
 
-No OpenAI API calls. No extra billing. Just your Plus subscription doing what it already pays for.
+No OpenAI API calls. No extra billing. Just your Plus subscription doing what it already pays for (note: this will consume your ChatGPT Plus message quota for DALL-E 3).
 
 ## License
 

@@ -1,6 +1,6 @@
 ---
 name: codex-image
-description: "通过 Codex CLI (ChatGPT Plus) 免费生图。需安装 Codex.app 并登录 ChatGPT Plus。特点：文字渲染精准、照片级真实度。"
+description: "通过 Codex CLI (ChatGPT Plus) 免费生图。需安装 Codex 并登录 ChatGPT Plus。特点：文字渲染精准、照片级真实度。"
 allowed-tools: Bash(python3 *)
 ---
 
@@ -8,7 +8,8 @@ allowed-tools: Bash(python3 *)
 
 通过 Codex CLI + ChatGPT Plus 订阅免费生图，**不走 API 计费**。
 
-> 前提：已安装 Codex.app 并登录 ChatGPT Plus
+> 前提：已安装 Codex 并登录 ChatGPT Plus
+> 注意：使用此工具会消耗您的 ChatGPT Plus 账号每 3 小时的消息对话额度（适用于 DALL-E 3 和 GPT-4）。
 
 ## 使用方式
 
@@ -37,4 +38,4 @@ python3 ~/.claude/skills/codex-image/generate.py "日式枯山水庭院" 1024x15
 
 ## 原理
 
-Codex CLI 走 ChatGPT 订阅通道，生图不额外收费（Plus 包含额度）。
+Codex CLI 走 ChatGPT 订阅通道，生图没有额外的 API 费用，但会消耗 Plus 包含的消息额度。

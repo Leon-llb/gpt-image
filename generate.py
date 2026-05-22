@@ -3,7 +3,15 @@
 import os, sys, shutil, subprocess
 from datetime import datetime
 
-CODEX_BIN = "/Applications/Codex.app/Contents/Resources/codex"
+def get_codex_bin():
+    if sys.platform == "win32":
+        # Windows default installation path
+        return os.path.expandvars(r"%LOCALAPPDATA%\Programs\codex\codex.exe")
+    else:
+        # macOS default installation path
+        return "/Applications/Codex.app/Contents/Resources/codex"
+
+CODEX_BIN = os.environ.get("CODEX_BIN", get_codex_bin())
 GEN_DIR = os.path.expanduser("~/.codex/generated_images")
 
 

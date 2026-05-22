@@ -1,14 +1,15 @@
 ---
 name: codex-image
-description: "Free AI image generation via Codex CLI (ChatGPT Plus). Requires Codex.app installed and logged into a ChatGPT Plus account. Features: accurate text rendering, photorealistic quality."
+description: "AI image generation via Codex CLI (ChatGPT Plus). Requires Codex.app (or codex.exe) installed and logged into a ChatGPT Plus account. Features: accurate text rendering, photorealistic quality."
 allowed-tools: Bash(python3 *)
 ---
 
 # Codex Image (via Codex CLI)
 
-Free image generation through Codex CLI + ChatGPT Plus subscription. **No API billing.**
+Image generation through Codex CLI + ChatGPT Plus subscription. **No API billing.**
 
-> Prerequisite: Codex.app installed and logged into ChatGPT Plus
+> Prerequisite: Codex installed and logged into ChatGPT Plus
+> Note: Uses your existing ChatGPT Plus subscription limits (DALL-E 3 / GPT-4 message quotas apply).
 
 ## Usage
 
@@ -37,4 +38,4 @@ python3 ~/.claude/skills/codex-image/generate.py "a japanese zen garden" 1024x15
 
 ## How it works
 
-Codex CLI routes through your ChatGPT subscription — image generation costs nothing extra (included in Plus).
+Codex CLI routes through your ChatGPT subscription — no extra API costs, but it will consume your ChatGPT Plus message quota.
